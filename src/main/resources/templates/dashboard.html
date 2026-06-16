@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <h1>
+            Analiza cen mieszkań i stóp procentowych
+        </h1>
+        <div class="filters">
+            <select id="wojewodztwo">
+                <option value="">Wszystkie województwa</option>
+                <option value="Dolnoslaskie">Dolnośląskie</option>
+                <option value="Kujawsko-Pomorskie">Kujawsko-Pomorskie</option>
+                <option value="Lubelskie">Lubelskie</option>
+                <option value="Lubuskie">Lubuskie</option>
+                <option value="Lodzkie">Łódzkie</option>
+                <option value="Malopolskie">Małopolskie</option>
+                <option value="Mazowieckie">Mazowieckie</option>
+                <option value="Opolskie">Opolskie</option>
+                <option value="Podkarpackie">Podkarpackie</option>
+                <option value="Podlaskie">Podlaskie</option>
+                <option value="Pomorskie">Pomorskie</option>
+                <option value="Slaskie">Śląskie</option>
+                <option value="Swietokrzyskie">Świętokrzyskie</option>
+                <option value="Warminsko-Mazurskie">Warmińsko-Mazurskie</option>
+                <option value="Wielkopolskie">Wielkopolskie</option>
+                <option value="Zachodniopomorskie">Zachodniopomorskie</option>
+            </select>
+            <input
+                    type="number"
+                    id="rokOd"
+                    placeholder="Rok od">
+            <input
+                    type="number"
+                    id="rokDo"
+                    placeholder="Rok do">
+            <button onclick="loadData()">
+                Szukaj
+            </button>
+        </div>
+        <hr>
+        <table id="resultsTable">
+            <thead>
+            <tr>
+                <th>Rok</th>
+                <th>Kwartał</th>
+                <th>Województwo</th>
+                <th>Cena</th>
+                <th>Stopa</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <hr>
+        <h2>Ceny mieszkań</h2>
+        <canvas id="priceChart"></canvas>
+        <hr>
+        <h2>Stopy procentowe</h2>
+        <canvas id="rateChart"></canvas>
+        <hr>
+        <h2>Korelacja</h2>
+        <div id="correlationResult"></div>
+        <hr>
+        <button onclick="downloadJson()">
+            Eksport JSON
+        </button>
+        <button onclick="downloadXml()">
+            Eksport XML
+        </button>
+        <div id="adminSection" style="display:none">
+            <hr>
+            <button onclick="refreshData()">
+                Odśwież dane
+            </button>
+        </div>
+        <script src="/js/dashboard.js"></script>
+    </body>
+</html>
